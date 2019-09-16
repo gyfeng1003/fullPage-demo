@@ -6,9 +6,9 @@ const webpack = require('webpack'); //访问内置的插件
 module.exports = {
     entry: './src/script/main.js',
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "fullPage"),
         filename: 'js/[name].js',
-        publicPath: '/'
+        publicPath: './'
     },
     devServer: {
         historyApiFallback: true,
@@ -52,6 +52,17 @@ module.exports = {
                 options: {
                     limit: 8192,
                     name: "images/[name].[hash:7].[ext]"
+                }
+            },
+            {
+                test: /\.html$/,
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        // ignoreCustomFragments: [],
+                        // root: path.resolve(__dirname, 'src'),
+                        // attrs: ['img:src']
+                    }
                 }
             }
         ]
